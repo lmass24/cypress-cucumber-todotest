@@ -67,23 +67,23 @@ Feature: Sign up
 # Conclusiones
 
 Plugins, herramientas y algunas buenas prácticas: 
-    - Uso de cucumber: Cypress ya viene con una estructura tipo “Gherkin” (con los describe y los it) por lo que considero que no es necesario el uso de cucumber y le añade una capa más de complejidad. Sin embargo agregué este plugin (cypress-cucumber-preprocessor) por los requerimientos de la prueba, de igual manera el uso de este plugin facilita la exportación de los escenarios de prueba (archivos .feature) a los gestores de casos de prueba y si el equipo de testing está en constante comunicación con la parte de producto y las regresiones son de interés para áreas ajenas a las de QA, esta puede ser una herramienta muy valiosa, de lo contrario no la recomendaría.
-    - Reporte: Aprovechando el uso del plugin de cucumber (cypress-cucumber-preprocessor) este entrega un reporte con la descripción de los casos en formato “Gherkin” y muestra un pantallazo en caso de errores.
-    - Uso de patrón de diseño: Page Object Model. Cypress recomienda otros patrones de diseño muy propios de el, sin embargo, considero que POM sigue siendo la mejor opción por su mantenimiento.
-    - Agregar múltiples asserts (validaciones) en cada caso de prueba, esto para hacer nuestras pruebas mucho más robustas. Debemos evitar en la medida de lo posible lo que Cypress denomina como los “tiny” tests donde solamente se tiene un solo assert por caso de prueba. No vamos a tener consecuencias en cuanto al performance de nuestro código porque las pruebas se ejecutan realmente rápido.
-    - Validacines desacopladas del modelado de la página (en la clase step definitions).
-
-    Timeouts:
+- Uso de cucumber: Cypress ya viene con una estructura tipo “Gherkin” (con los describe y los it) por lo que considero que no es necesario el uso de cucumber y le añade una capa más de complejidad. Sin embargo agregué este plugin (cypress-cucumber-preprocessor) por los requerimientos de la prueba, de igual manera el uso de este plugin facilita la exportación de los escenarios de prueba (archivos .feature) a los gestores de casos de prueba y si el equipo de testing está en constante comunicación con la parte de producto y las regresiones son de interés para áreas ajenas a las de QA, esta puede ser una herramienta muy valiosa, de lo contrario no la recomendaría.
+- Reporte: Aprovechando el uso del plugin de cucumber (cypress-cucumber-preprocessor) este entrega un reporte con la descripción de los casos en formato “Gherkin” y muestra un pantallazo en caso de errores.
+- Uso de patrón de diseño: Page Object Model. Cypress recomienda otros patrones de diseño muy propios de el, sin embargo, considero que POM sigue siendo la mejor opción por su mantenimiento.
+- Agregar múltiples asserts (validaciones) en cada caso de prueba, esto para hacer nuestras pruebas mucho más robustas. Debemos evitar en la medida de lo posible lo que Cypress denomina como los “tiny” tests donde solamente se tiene un solo assert por caso de prueba. No vamos a tener consecuencias en cuanto al performance de nuestro código porque las pruebas se ejecutan realmente rápido.
+- Validacines desacopladas del modelado de la página (en la clase step definitions).
+- Timeouts:
     En esta página la mayoría de los elementos se renderizan por completo lo que hace que las pruebas no sean complejas, sin embargo existían casos especificos en donde los elementos no se renderizaban por completo y cypress no los encuentraba bajo ningun tipo de contexto, por lo que hice uso de estrategias no tan bien vistas como los tiempos de espera ramdoms (cy.waits). Por precaución también se instaló la librería cypress-waitfor que lo que hace es esperar a que X elemento exista y sea visible para proceder con los siguientes pasos del tests.
     NOTA: Cypress recomienda es interceptar la ruta de dominio en el que estamos trabajando, ponerle un determinado alias y que espere a que esas rutas o peticiones esten resueltas, esta estrategia funciona muy bien sobre todo al momento de emplear alguna regresión y queremos agregar robustés, sin embargo, no soluciona el uso de la renderización que comenté anteriormente. De igual manera por la facilidad de las pruebas para este caso no fué necesario haer uso de esta estrategia de espera. 
 
-    Selectores
+- Selectores:
     Se observa que muchos elementos de la página tienen el atributo data-cy el cual nos brinda un selector específico que solo se usa para realizar pruebas.Esto es una buena práctica para cypress y disminuye la dificultad para llevar desarrollar las pruebas.
     https://docs.cypress.io/guides/references/best-practices
 
 
-Cosas por hacer:
-    - Eventualmente cuando las pruebas sean mas complegas o grandes recomendaría que estas fuesen 100% independientes, por ejemplo si para probar la edición de algún registro como requisito el registro tiene que existir, entonces em el mismo caso de prueba creo y edito el registro. Para la creación de todos estos datos de prueba emplearía técnicas ajenas a la UI, como por ejemplo: inyectar querys directamente a la base de datos para preparar nuestro ambiente o incluso para borrar colecciones o registros creados en la misma prueba.
-    - Emplear alguna herramienta de continuos testing para orquestar nuestras automatizaciones como Jenkins, Gitlab-ci, Github actions, Circle, etc. Por la facilidad de su implementación. documentación y el hecho de que es open source empezaría haciendo uso de Jenkins.
-    - Mejorar el tema de reportes, para este caso no vi necesario agregar alguna librería de reporting sin embargo recomiendo algunas como Allure y mochawesome sobretodo al momento de implmenetar CI/CD.
+## Cosas por hacer:
+
+- Eventualmente cuando las pruebas sean mas complegas o grandes recomendaría que estas fuesen 100% independientes, por ejemplo si para probar la edición de algún registro como requisito el registro tiene que existir, entonces em el mismo caso de prueba creo y edito el registro. Para la creación de todos estos datos de prueba emplearía técnicas ajenas a la UI, como por ejemplo: inyectar querys directamente a la base de datos para preparar nuestro ambiente o incluso para borrar colecciones o registros creados en la misma prueba.
+- Emplear alguna herramienta de continuos testing para orquestar nuestras automatizaciones como Jenkins, Gitlab-ci, Github actions, Circle, etc. Por la facilidad de su implementación. documentación y el hecho de que es open source empezaría haciendo uso de Jenkins.
+- Mejorar el tema de reportes, para este caso no vi necesario agregar alguna librería de reporting sin embargo recomiendo algunas como Allure y mochawesome sobretodo al momento de implmenetar CI/CD.
     
