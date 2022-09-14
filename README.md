@@ -43,9 +43,11 @@ Feature: Sign up
         And I intent register a new user with the same email
         Then The form shows an error message: "Ya existe una cuenta con este email"
 ```
+```
 Si se desea ejecutar un determinado tag: `npx cypress run --env TAGS="@test"`
 Si se desea ejecutar todos los test menos los que tengan determinado tag: `npx cypress run --env TAGS="not @test"`
 Si se desea ejecutar combinaciones de tags con condicionales AND/OR: `npx cypress run --env TAGS="@positive or @negative and not @omit"`
+```
 
 ## Topics
 - Cypress 10.6.0
@@ -55,7 +57,7 @@ Si se desea ejecutar combinaciones de tags con condicionales AND/OR: `npx cypres
 - Uso de tags para agrupar tests
 - Reporte: reporte de cucumber
 
-# Casos de prueba
+# 💡 Casos de prueba
 
 | Test case ID  | Description                                                                           | Type         |
 | ---           | ---                                                                                   | ---          |
