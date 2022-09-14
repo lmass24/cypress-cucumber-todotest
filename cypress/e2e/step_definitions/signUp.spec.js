@@ -5,14 +5,11 @@ import SignUpPage from "../../support/page_objects/SignUpPage.js"
 import ActivatePage from "../../support/page_objects/ActivatePage.js"
 import LoginPage from "../../support/page_objects/LoginPage.js"
 
-
-
 const homePage = new HomePage()
 const signUpPage = new SignUpPage()
 const activatePage = new ActivatePage()
 const loginPage = new LoginPage()
 let email = ""
-
 
 beforeEach(() => {
     cy.fixture('user').then((userInformation) => {
@@ -34,6 +31,12 @@ When('I complete my personal information', () =>{
     cy.get(signUpPage.phoneInput()).type(userInformation.phone)
     cy.get(signUpPage.selectCheckItem("En menos de 3 meses")).click()
     cy.get(signUpPage.selectCheckItem("Para desplazamientos de ocio.")).click()
+})
+
+When('I submit registration with empty fields', () =>{
+    cy.waitFor(cy.get(signUpPage.emailInput()))
+    cy.get(signUpPage.confirmRegistrationButton()).scrollIntoView().should("be.visible").and("not.be.disabled")
+    cy.get(signUpPage.confirmRegistrationButton()).click()
 })
 
 And('I select the permissions for a student', () => {
@@ -73,6 +76,22 @@ And('I intent register a new user with the same email', () => {
     cy.get(signUpPage.confirmRegistrationButton()).click()
 })
 
+And('In the email field the message is shown: {string}', (message) => {
+    cy.get(signUpPage.errorMessageAccountAlreadyExists()).should("have.text",message).and('be.visible')
+})
+
+And('Each required field shows an error message', () => {
+    cy.get(signUpPage.emptyMessageEmail()).should("have.text","Indica tu email").and("be.visible")
+    cy.get(signUpPage.emptyMessagePostalCode()).should("have.text","Indica el código postal").and("be.visible")
+    cy.get(signUpPage.emptyMessagePhone()).should("have.text","Indica el teléfono").and("be.visible")
+    cy.get(signUpPage.emptyMessage2Questions()).should("have.text","Debes responder las 2 preguntas").and("be.visible")
+    cy.get(signUpPage.emptyMessagePermission()).should("have.text","Indica el permiso").and("be.visible")
+    cy.get(signUpPage.emptyMessageGoByFree()).should("have.text","Indica si vas por libre").and("be.visible")
+    cy.get(signUpPage.emptyMessagePassword()).should("have.text","Indica tu contraseña").and("be.visible")
+    cy.get(signUpPage.emptyMessagePrivacyPolicy()).should("have.text","Debes aceptar nuestra política de privacidad").and("be.visible")
+    cy.get(signUpPage.emptyMessageReceiveInformation()).should("have.text","Indica si deseas recibir información").and("be.visible")
+})
+
 Then('I can login with the user created', ()=> {
     cy.waitFor(cy.get(activatePage.titleTextAssert()))
     cy.waitFor(cy.get(activatePage.identifyButton()))
@@ -94,5 +113,8 @@ Then('I can login with the user created', ()=> {
 
 Then('The form shows an error message: {string}', (message)=> {
     cy.get(signUpPage.errorMessageCheckTheForm()).should("have.text","Revisa el formulario, existen errores").and('be.visible')
-    cy.get(signUpPage.errorMessageAccountAlreadyExists(message)).should("have.text","Ya existe una cuenta con este email").and('be.visible')
 })
+
+
+
+
