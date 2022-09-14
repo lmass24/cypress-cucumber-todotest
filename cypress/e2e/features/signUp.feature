@@ -55,7 +55,7 @@ Feature: Sign up
         And I try to log in with a valid user and an invalid password
         Then I cant login with the user created
 
-    @test @omite @functional
+    @test @omit @functional
     Scenario: TC-FC-008 - Verify if the data in password field is visible as asterisk    
         When I complete my personal information
         And I write a password valid
