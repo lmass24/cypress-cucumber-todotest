@@ -1,4 +1,8 @@
-Feature: Sign up flow
+Feature: Sign up
+
+    As a new user on the platform
+    I want to sign up
+    So I be able to log in eventually
 
     Background: Visit the home page
         Given I am visit the platform
@@ -9,7 +13,7 @@ Feature: Sign up flow
         And I select the permissions for a student
         Then I can login with the user created
 
-    @focus
+    @focus 
     Scenario: TC-FC-002 - Sign up for driver training
         When I complete my personal information
         And I select the permissions for a driver training

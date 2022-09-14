@@ -1,15 +1,49 @@
 # cypress-cucumber-project
 
-- ## 💻 Requisitos previos
-Antes de usar este proyecto, solo necesita tener Node Js instalado en su computador.
+- ## 💻 Previous requirements
+Before using this project, you just need to have Node Js installed on your computer.
 https://nodejs.org/es/download/
 
-## 🚀 Instalar el proyecto
-Instale las dependencias del proyecto con: npm install
+## 🚀 Install project dependencie
+Install project dependencies with: `npm install`
 
-## 🚀 Ejecute la prueba
-Abra la terminal y ejecute: npm run cy:run
-Al finalizar la prueba se generará un reporte de cucumber en todo el root del proyecto con el nombre de cucumber-report.html, en este puede ver el resultado de las pruebas.
+## 🚀 Run tets
+Open the terminal and run: `npm run cy:run`
+At the end of the test, a cucumber report will be generated in the root of the project with the name of cucumber-report.html, in this you can see the results of the tests.
+
+
+You can start your tests without setting any tags. And then put a `@focus` on the scenario (or scenarios) you want to focus on while development or bug fixing. Also you can skip the tests cases that you dont want to run with `@skip`
+
+For example:
+```gherkin
+Feature: Sign up
+
+    As a new user on the platform
+    I want to sign up
+    So I be able to log in eventually
+
+    Background: Visit the home page
+        Given I am visit the platform
+
+    @skip
+    Scenario: TC-FC-001 - Sign up for student     
+        When I complete my personal information
+        And I select the permissions for a student
+        Then I can login with the user created
+
+    @focus
+    Scenario: TC-FC-002 - Sign up for driver training
+        When I complete my personal information
+        And I select the permissions for a driver training
+        Then I can login with the user created
+    
+    @focus
+    Scenario: TC-FC-003 - Sign up with user registered already
+        When I complete my personal information
+        And I select the permissions for a driver training
+        And I intent register a new user with the same email
+        Then The form shows an error message: "Ya existe una cuenta con este email"
+```
 
 # Test Cases
 
