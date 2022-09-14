@@ -1,0 +1,26 @@
+{
+  
+    "email": "lmass24@hotmail.com",
+    "postal_code":"05003",
+    "phone":"3004921174",
+    "permission_type": {
+      "student": {
+        "B_Tourism": "B" ,
+        "A1_A2_A_Motorcycle": "A",
+        "AM_Moped":"AM",
+        "C1_C_Truck":"C",
+        "D1_D_Bus":"D",
+        "B_E_Trailer":"EB",
+        "C_E_Trailer":"EC",
+        "ADR":"ADR",
+        "CAP_Goods":"CAM",
+        "CAP_Travellers":"CAV",
+        "Professional_Competence_Goods":"COM",
+        "Professional_competence_Travellers":"COV",
+        "security_advisor":"CON",
+        "point_recovery":"REP",
+        "None":"X"
+      },
+      "driver_training": "I am a driver training professional. (teacher, director, ...)"
+    }
+}
