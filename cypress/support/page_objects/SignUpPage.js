@@ -46,6 +46,22 @@ class SignUpPage {
         errorMessageAccountAlreadyExists() {
             return ".int:contains('Ya existe una cuenta con este email')"
         }
+        errorMessageEmail() {
+            return ".int:contains('El formato del email es incorrecto')"
+        }
+        errorMessagePostalCode() {
+            return ".int:contains('Este código postal no existe')"
+        }
+        errorMessagePhone() {
+            return ".int:contains('Teléfono incorrecto')"
+        }
+        errorMessagePassword() {
+            return ".int:contains('La contraseña debe tener entre 4 y 15 caracteres')"
+        }
+        errorMessagePasswordIncorrectRepeat() {
+            return ".int:contains('Repetición de contraseña incorrecta')"
+        }
+        
         emptyMessageEmail() {
             return ".int:contains('Indica tu email')"
         }

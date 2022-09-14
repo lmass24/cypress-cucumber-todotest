@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "cypress:runner": "cypress open",
-    "cypress:run": "cypress run",
-    "cy:run": "cypress run --env TAGS=\"not @skip\" --browser chrome --headed"
+    "cys:run": "cypress run",
+    "cy:run headed": "cypress run --env TAGS=\"not @skip\" --browser chrome --headed",
+    "cy:run headless": "cypress run --env TAGS=\"not @skip\" --browser chrome --headless"
   },
   "author": "Luis Carlos Mass Ortega",
   "license": "ISC",

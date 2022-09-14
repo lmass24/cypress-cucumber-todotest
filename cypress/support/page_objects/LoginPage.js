@@ -16,5 +16,8 @@ class HomePage {
        bodyLogin() {
             return "#ini_ses"
        }
+       errorCredentialIncorrect() {
+            return ".int:contains('Email o contraseña incorrectos')"
+       }
     }
     export default HomePage
