@@ -18,7 +18,7 @@ Feature: Sign up
         When I complete my personal information
         And I select the permissions for a driver training
         Then I can login with the user created
-    
+
     @test @negative @functional
     Scenario: TC-FC-003 - Sign up with user registered already
         When I complete my personal information
@@ -60,6 +60,7 @@ Feature: Sign up
         When I complete my personal information
         And I write a password valid
         Then I see that the password field is visible as asterisk
+    
 
         
             

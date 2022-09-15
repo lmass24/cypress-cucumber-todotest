@@ -14,7 +14,5 @@ class ActivatePage {
         identifyButton() {
             return "#bot_regok"
         }
-
-        
     }
     export default ActivatePage

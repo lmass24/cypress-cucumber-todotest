@@ -11,7 +11,6 @@ class HomePage {
        logInButton() {
             return "#bot_ini"
        }
-
     //**********************************************************Assertions*******************************************************/
        bodyLogin() {
             return "#ini_ses"

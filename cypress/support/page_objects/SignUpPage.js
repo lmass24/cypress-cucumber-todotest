@@ -20,7 +20,6 @@ class SignUpPage {
         permissionSelect() {
             return "#perm"
         }   
-
     //**********************************************************checks**********************************************************/
         selectCheckItem(option) {
             return ".spr:contains('"+option+"')"
@@ -37,6 +36,10 @@ class SignUpPage {
             }
         }
     //**********************************************************Asserts**********************************************************/
+        titleTextAssert() {
+            return ".tit"
+        }
+        
         sendEmailTextAssert() {
             return ".fset_email > span"
         }
@@ -92,8 +95,6 @@ class SignUpPage {
     //**********************************************************Buttons***********************************************************/
         confirmRegistrationButton() {
             return "#bot_reg"
-        }
-
-        
+        }  
     }
     export default SignUpPage
